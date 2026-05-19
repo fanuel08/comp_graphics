@@ -3,7 +3,7 @@
 void display(void) {
     glClear(GL_COLOR_BUFFER_BIT);   // clear screen to black
     glColor3f(1.0, 0.0, 1.0);       // magenta colour
-    glutWireTeapot(0.7);            // draw wireframe teapot
+    glutWireTeapot(0.5);            // draw wireframe teapot
     glFlush();
 }
 
@@ -12,12 +12,14 @@ void init(void) {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(-1.0, 1.0, -1.0, 1.0, -1.0, 1.0);  // keeps proportions correct
+    glViewport(0, 0, 300, 200);  // set viewport to match window size
+    glMatrixMode(GL_MODELVIEW);
 }
 
 int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowSize(577, 314);   // matches the given graphic
+    glutInitWindowSize(300, 200);
     glutCreateWindow("Wireframe Teapot");
     init();
     glutDisplayFunc(display);
